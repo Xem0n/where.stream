@@ -6,12 +6,13 @@ import {
 } from 'react-router-dom';
 import './index.css';
 import App from './App';
+import Search from './components/search';
 import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Search />,
   },
 ]);
 
@@ -20,7 +21,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App>
+      <RouterProvider router={router} />
+    </App>
   </React.StrictMode>
 );
 
