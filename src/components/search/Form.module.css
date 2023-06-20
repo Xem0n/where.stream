@@ -1,0 +1,94 @@
+* { 
+  box-sizing: border-box;
+}
+
+.Form {
+  width: 95%;
+
+  margin: 20px 2.5% 0 2.5%;
+}
+
+.Inputs {
+  width: 100%;
+
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.Title {
+  flex: 50%;
+
+  padding: 5px;
+  outline: 0;
+  border: 0 solid black;
+  border-width: 0 0 1px 0;
+  border-radius: 0;
+
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.Select {
+  flex: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-left: 10px;
+
+  border: 0px solid black;
+  border-width: 0 0 1px 0;
+}
+
+.Select::after {
+  content: "";
+
+  width: 0.8em;
+  height: 0.5em;
+
+  background-color: black;
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+select {
+  width: 100%;
+
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 0 0 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  color: black;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.Search {
+  width: 100%;
+
+  outline: 0;
+  border: 0;
+  margin: 0;
+  padding: 5px;
+  background: none;
+  cursor: pointer;
+
+  color: black;
+  font-size: 1rem;
+  font-family: inherit;
+
+  margin-top: 15px;
+  border: 1px solid black;
+  border-radius: 0;
+}
