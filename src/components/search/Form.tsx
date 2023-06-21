@@ -41,7 +41,7 @@ function Form(props: FormProps) {
         <div className={styles.Selects}>
           <div className={styles.Select}>
             <select value={type}
-                    onChange={e => setType(Number(e.target.value) as ShowTypes)}>
+                    onChange={e => setType(e.target.value as ShowTypes)}>
               <option value={ShowTypes.All}>All</option>
               <option value={ShowTypes.Series}>Series</option>
               <option value={ShowTypes.Movies}>Movies</option>

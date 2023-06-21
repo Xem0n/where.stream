@@ -1,7 +1,7 @@
 enum ShowTypes {
-  All,
-  Series,
-  Movies
+  All = 'all',
+  Series = 'series',
+  Movies = 'movie'
 }
 
 export default ShowTypes;
