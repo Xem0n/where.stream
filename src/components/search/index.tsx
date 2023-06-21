@@ -9,7 +9,7 @@ const MIN_TITLE_LENGTH = 3;
 function Search() {
   const [isSearching, setSearching] = useState(false);
 
-  const getMovies = async (title: string, country: string, type: ShowTypes) => {
+  const getShows = async (title: string, country: string, type: ShowTypes) => {
     setSearching(true);
 
     if (title.length < MIN_TITLE_LENGTH) {
@@ -39,7 +39,7 @@ function Search() {
 
   return (
     <>
-      <Form onSubmit={getMovies} />
+      <Form onSubmit={getShows} />
       {isSearching ? 
         <Loading /> : 
         <Results />
