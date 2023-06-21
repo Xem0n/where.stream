@@ -25,7 +25,7 @@ function Form(props: FormProps) {
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    props.onSubmit(title, country, type);
+    props.onSubmit(title.toLowerCase(), country.toLowerCase(), type);
   };
 
   return (
