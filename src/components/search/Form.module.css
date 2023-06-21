@@ -48,6 +48,8 @@
 
   border: 0px solid black;
   border-width: 0 0 1px 0;
+
+  cursor: pointer;
 }
 
 .Select::after {
