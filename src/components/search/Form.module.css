@@ -12,7 +12,8 @@
   width: 100%;
 
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
+  gap: 15px 10px;
 }
 
 .Title {
@@ -28,14 +29,22 @@
   font-family: inherit;
 }
 
+.Selects {
+  flex: 120px;
+  width: 100%;
+
+  display: flex;
+  flex-flow: row nowrap;
+
+  gap: 10px;
+}
+
 .Select {
   flex: auto;
 
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
-  margin-left: 10px;
 
   border: 0px solid black;
   border-width: 0 0 1px 0;
@@ -75,6 +84,7 @@ select::-ms-expand {
 }
 
 .Search {
+  flex: 300px;
   width: 100%;
 
   outline: 0;
@@ -88,7 +98,6 @@ select::-ms-expand {
   font-size: 1rem;
   font-family: inherit;
 
-  margin-top: 15px;
   border: 1px solid black;
   border-radius: 0;
 }

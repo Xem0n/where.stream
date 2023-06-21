@@ -26,28 +26,30 @@ function Form(props: FormProps) {
                value={title}
                onChange={e => setTitle(e.target.value)} />
 
-        <div className={styles.Select}>
-          <select value={type}
-                  onChange={e => setType(e.target.value)}>
-            <option>All</option>
-            <option>Series</option>
-            <option>Movies</option>
-          </select>
+        <div className={styles.Selects}>
+          <div className={styles.Select}>
+            <select value={type}
+                    onChange={e => setType(e.target.value)}>
+              <option>All</option>
+              <option>Series</option>
+              <option>Movies</option>
+            </select>
+          </div>
+
+          <div className={styles.Select}>
+            <select value={country}
+                    onChange={e => setCountry(e.target.value)}>
+              <option>PL</option>
+              <option>US</option>
+              <option>DE</option>
+            </select>
+          </div>
         </div>
 
-        <div className={styles.Select}>
-          <select value={country}
-                  onChange={e => setCountry(e.target.value)}>
-            <option>PL</option>
-            <option>US</option>
-            <option>DE</option>
-          </select>
-        </div>
+        <button className={styles.Search}>
+          Search...
+        </button>
       </div>
-
-      <button className={styles.Search}>
-        Search...
-      </button>
     </form>
   );
 }
