@@ -2,6 +2,8 @@ import ServicesResult from '../types/ServicesResult';
 import Show from '../types/Show';
 import ShowTypes from '../types/ShowTypes';
 
+const API_KEY = process.env.REACT_APP_API_KEY as string;
+
 async function loadData() {
   if (
     localStorage.getItem('services') !== null &&
@@ -21,7 +23,7 @@ async function fetchServices(): Promise<ServicesResult> {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'd8f31e989dmsh23bf5ea7462eb34p13be50jsn7e0152ef9e48',
+      'X-RapidAPI-Key': API_KEY,
       'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com',
     },
   };
@@ -67,12 +69,16 @@ function arrayUnion<T>(arr1: T[], arr2: T[]): T[] {
   return [...new Set([...arr1, ...arr2])];
 }
 
-async function fetchShows(title: string, country: string, type: ShowTypes): Promise<Show[]> {
+async function fetchShows(
+  title: string,
+  country: string,
+  type: ShowTypes
+): Promise<Show[]> {
   const url = `https://streaming-availability.p.rapidapi.com/v2/search/title?title=${title}&country=${country}&show_type=${type}&output_language=en`;
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'd8f31e989dmsh23bf5ea7462eb34p13be50jsn7e0152ef9e48',
+      'X-RapidAPI-Key': API_KEY,
       'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com',
     },
   };
