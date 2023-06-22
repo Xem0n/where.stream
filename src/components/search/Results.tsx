@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactModal from 'react-modal';
+import getServicePrettyName from '../../api/prettyNames';
 import Show from '../../types/Show';
 import styles from './Results.module.css';
 import Thumbnail from './Thumbnail';
@@ -26,7 +27,7 @@ function Results(props: ResultsProps) {
 
   const availableStreamings = Object.values(display?.streamingInfo ?? {})
     .map(country => Object.keys(country)
-    .map(streaming => <li key={streaming}>{streaming}</li>));
+    .map(streaming => <li key={streaming}>{getServicePrettyName(streaming)}</li>));
   
   return (
     <>
