@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Show from '../../types/Show';
 import ShowTypes from '../../types/ShowTypes';
 import Loading from '../Loading';
 import Form from './Form';
@@ -8,6 +9,7 @@ const MIN_TITLE_LENGTH = 3;
 
 function Search() {
   const [isSearching, setSearching] = useState(false);
+  const [shows, setShows] = useState([] as Show[]);
 
   const getShows = async (title: string, country: string, type: ShowTypes) => {
     setSearching(true);
@@ -29,7 +31,7 @@ function Search() {
       const response = await fetch(url, options);
       const data = await response.json();
 
-      console.log(data);
+      setShows(data.result);
     } catch (e: any) {
       console.error(e);
     }
@@ -42,7 +44,7 @@ function Search() {
       <Form onSubmit={getShows} />
       {isSearching ? 
         <Loading /> : 
-        <Results />
+        <Results shows={shows} />
       }
     </>
   );
