@@ -13,19 +13,18 @@ function Thumbnail(props: ThumbnailProps) {
   const onClick = () => props.onClick(show);
 
   return (
-    <div key={show.title} 
-         onClick={onClick}
-         style={{
-          backgroundImage: `url("${show.backdropURLs['original']}")`
-         }}
-         className={styles.Thumbnail}>
+    <div
+      key={show.title}
+      onClick={onClick}
+      style={{
+        backgroundImage: `url("${show.backdropURLs['original']}")`,
+      }}
+      className={styles.Thumbnail}>
       <div>
-        <p className={styles.Title}>
-          {show.title}
-        </p>
+        <p className={styles.Title}>{show.title}</p>
       </div>
     </div>
   );
 }
 
-export default Thumbnail
+export default Thumbnail;

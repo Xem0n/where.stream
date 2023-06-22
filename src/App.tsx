@@ -25,7 +25,9 @@ function App(props: AppProps) {
   return (
     <div className={styles.App}>
       <header className={styles.Header}>
-        <a className={styles.Link} href='/'>where.stream</a>
+        <a className={styles.Link} href='/'>
+          where.stream
+        </a>
       </header>
       {children}
     </div>

@@ -20,11 +20,11 @@ function Search() {
 
     const url = `https://streaming-availability.p.rapidapi.com/v2/search/title?title=${title}&country=${country}&show_type=${type}&output_language=en`;
     const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'd8f31e989dmsh23bf5ea7462eb34p13be50jsn7e0152ef9e48',
-            'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-        }
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'd8f31e989dmsh23bf5ea7462eb34p13be50jsn7e0152ef9e48',
+        'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com',
+      },
     };
 
     try {
@@ -42,10 +42,7 @@ function Search() {
   return (
     <>
       <Form onSubmit={getShows} />
-      {isSearching ? 
-        <Loading /> : 
-        <Results shows={shows} />
-      }
+      {isSearching ? <Loading /> : <Results shows={shows} />}
     </>
   );
 }

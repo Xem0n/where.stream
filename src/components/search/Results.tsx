@@ -18,43 +18,41 @@ function Results(props: ResultsProps) {
 
   const displayShow = (show: Show) => {
     setDisplay(show);
-  }
+  };
 
-  const thumbnails = props.shows.map(
-    show => <Thumbnail show={show}
-                       onClick={displayShow} />
+  const thumbnails = props.shows.map((show) => (
+    <Thumbnail show={show} onClick={displayShow} />
+  ));
+
+  const availableStreamings = Object.values(display?.streamingInfo ?? {}).map(
+    (country) =>
+      Object.keys(country).map((streaming) => (
+        <li key={streaming}>{getServicePrettyName(streaming)}</li>
+      ))
   );
 
-  const availableStreamings = Object.values(display?.streamingInfo ?? {})
-    .map(country => Object.keys(country)
-    .map(streaming => <li key={streaming}>{getServicePrettyName(streaming)}</li>));
-  
   return (
     <>
-      {thumbnails.length > 0 ?
-        <div className={styles.ShowsList}>
-          {thumbnails}
-        </div> :
+      {thumbnails.length > 0 ? (
+        <div className={styles.ShowsList}>{thumbnails}</div>
+      ) : (
+        <p className={styles.Fallback}>We couldn't find anything :(</p>
+      )}
 
-        <p className={styles.Fallback}>
-          We couldn't find anything :(
-        </p>
-      }
-
-      <ReactModal isOpen={display !== undefined}
-                  onRequestClose={() => setDisplay(undefined)}
-                  className={styles.Show}>
-        <p className={styles.Title}>
-          {display?.title}
-        </p>
+      <ReactModal
+        isOpen={display !== undefined}
+        onRequestClose={() => setDisplay(undefined)}
+        className={styles.Show}>
+        <p className={styles.Title}>{display?.title}</p>
 
         <p>Available in your region on:</p>
 
         <ul className={styles.Services}>
-          {availableStreamings.length > 0 ?
-            availableStreamings :
+          {availableStreamings.length > 0 ? (
+            availableStreamings
+          ) : (
             <li>Nothing :(</li>
-          }
+          )}
         </ul>
       </ReactModal>
     </>

@@ -6,7 +6,7 @@ interface Show {
   imdbRating: number;
   backdropURLs: {
     [resolution: string]: string;
-  }
+  };
   streamingInfo: {
     [country: string]: {
       [service: string]: Object;
