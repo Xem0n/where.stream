@@ -19,7 +19,7 @@
   flex-flow: column nowrap;
 
   background: #00000066;
-  backdrop-filter: blur(1px);
+  /* backdrop-filter: blur(1px); */
 }
 
 .Title {
