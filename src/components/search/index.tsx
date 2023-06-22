@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { fetchShows } from '../../api/data';
 import Show from '../../types/Show';
 import ShowTypes from '../../types/ShowTypes';
 import Loading from '../Loading';
@@ -9,7 +10,7 @@ const MIN_TITLE_LENGTH = 3;
 
 function Search() {
   const [isSearching, setSearching] = useState(false);
-  const [shows, setShows] = useState();
+  const [shows, setShows] = useState<Show[]>();
 
   const getShows = async (title: string, country: string, type: ShowTypes) => {
     setSearching(true);
@@ -18,23 +19,7 @@ function Search() {
       return;
     }
 
-    const url = `https://streaming-availability.p.rapidapi.com/v2/search/title?title=${title}&country=${country}&show_type=${type}&output_language=en`;
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': 'd8f31e989dmsh23bf5ea7462eb34p13be50jsn7e0152ef9e48',
-        'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com',
-      },
-    };
-
-    try {
-      const response = await fetch(url, options);
-      const data = await response.json();
-
-      setShows(data.result);
-    } catch (e: any) {
-      console.error(e);
-    }
+    setShows(await fetchShows(title, country, type));
 
     setSearching(false);
   };

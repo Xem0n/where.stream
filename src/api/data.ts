@@ -1,7 +1,12 @@
 import ServicesResult from '../types/ServicesResult';
+import Show from '../types/Show';
+import ShowTypes from '../types/ShowTypes';
 
 async function loadData() {
-  if (localStorage.getItem('services') !== null && localStorage.getItem('countries') !== null) {
+  if (
+    localStorage.getItem('services') !== null &&
+    localStorage.getItem('countries') !== null
+  ) {
     return;
   }
 
@@ -17,9 +22,9 @@ async function fetchServices(): Promise<ServicesResult> {
     method: 'GET',
     headers: {
       'X-RapidAPI-Key': 'd8f31e989dmsh23bf5ea7462eb34p13be50jsn7e0152ef9e48',
-      'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-    }
-  }
+      'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com',
+    },
+  };
 
   try {
     const response = await fetch(url, options);
@@ -62,6 +67,28 @@ function arrayUnion<T>(arr1: T[], arr2: T[]): T[] {
   return [...new Set([...arr1, ...arr2])];
 }
 
+async function fetchShows(title: string, country: string, type: ShowTypes): Promise<Show[]> {
+  const url = `https://streaming-availability.p.rapidapi.com/v2/search/title?title=${title}&country=${country}&show_type=${type}&output_language=en`;
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'd8f31e989dmsh23bf5ea7462eb34p13be50jsn7e0152ef9e48',
+      'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com',
+    },
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    return data.result;
+  } catch (e: any) {
+    console.error(e);
+  }
+
+  return [];
+}
+
 function getServices(): string[] {
   const services = localStorage.getItem('services') ?? '[]';
 
@@ -74,8 +101,4 @@ function getCountries(): string[] {
   return JSON.parse(countries);
 }
 
-export {
-  loadData,
-  getServices,
-  getCountries,
-};
+export { loadData, fetchShows, getServices, getCountries };
