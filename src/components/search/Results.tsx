@@ -6,7 +6,7 @@ import styles from './Results.module.css';
 import Thumbnail from './Thumbnail';
 
 interface ResultsProps {
-  shows: Show[];
+  shows: Show[] | undefined;
 }
 
 function Results(props: ResultsProps) {
@@ -20,7 +20,15 @@ function Results(props: ResultsProps) {
     setDisplay(show);
   };
 
-  const thumbnails = props.shows.map((show) => (
+  const getFallback = () => (
+    <p className={styles.Fallback}>
+      {props.shows === undefined
+        ? 'What do you wanna watch?'
+        : "We couldn't find anything :("}
+    </p>
+  );
+
+  const thumbnails = (props.shows ?? []).map((show) => (
     <Thumbnail show={show} onClick={displayShow} />
   ));
 
@@ -36,7 +44,7 @@ function Results(props: ResultsProps) {
       {thumbnails.length > 0 ? (
         <div className={styles.ShowsList}>{thumbnails}</div>
       ) : (
-        <p className={styles.Fallback}>We couldn't find anything :(</p>
+        getFallback()
       )}
 
       <ReactModal
