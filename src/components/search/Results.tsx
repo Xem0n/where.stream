@@ -32,12 +32,12 @@ function Results(props: ResultsProps) {
     <Thumbnail show={show} onClick={displayShow} />
   ));
 
-  const availableStreamings = Object.values(display?.streamingInfo ?? {}).map(
-    (country) =>
-      Object.keys(country).map((streaming) => (
-        <li key={streaming}>{getServicePrettyName(streaming)}</li>
-      ))
-  );
+  const availableStreamings = Object.keys(
+    Object.values(display?.streamingInfo ?? {})[0] ?? {}
+  )
+    .map((streaming) => getServicePrettyName(streaming))
+    .sort()
+    .map((streaming) => <li key={streaming}>{streaming}</li>);
 
   return (
     <>
