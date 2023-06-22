@@ -4,6 +4,9 @@ There's so much streaming services that looking for a certain movie can be a rea
 
 [Used API](https://rapidapi.com/movie-of-the-night-movie-of-the-night-default/api/streaming-availability)
 
+## .env
+`REACT_APP_API_KEY`
+
 ## Available Scripts
 
 In the project directory, you can run:
