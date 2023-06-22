@@ -1,10 +1,11 @@
 import React, { FormEvent, useState } from 'react';
 import { getCountries } from '../../api/data';
+import ShowQuery from '../../types/ShowQuery';
 import ShowTypes from '../../types/ShowTypes';
 import styles from './Form.module.css';
 
 interface FormProps {
-  onSubmit: (title: string, country: string, type: ShowTypes) => void;
+  onSubmit: (query: ShowQuery) => void;
 }
 
 function Form(props: FormProps) {
@@ -26,7 +27,11 @@ function Form(props: FormProps) {
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    props.onSubmit(title.toLowerCase(), country.toLowerCase(), type);
+    props.onSubmit({
+      title: title.toLowerCase(),
+      country: country.toLowerCase(),
+      type: type,
+    });
   };
 
   return (

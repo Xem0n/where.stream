@@ -1,6 +1,6 @@
 import ServicesResult from '../types/ServicesResult';
 import Show from '../types/Show';
-import ShowTypes from '../types/ShowTypes';
+import ShowQuery from '../types/ShowQuery';
 
 const API_KEY = process.env.REACT_APP_API_KEY as string;
 
@@ -69,12 +69,8 @@ function arrayUnion<T>(arr1: T[], arr2: T[]): T[] {
   return [...new Set([...arr1, ...arr2])];
 }
 
-async function fetchShows(
-  title: string,
-  country: string,
-  type: ShowTypes
-): Promise<Show[]> {
-  const url = `https://streaming-availability.p.rapidapi.com/v2/search/title?title=${title}&country=${country}&show_type=${type}&output_language=en`;
+async function fetchShows(query: ShowQuery): Promise<Show[]> {
+  const url = `https://streaming-availability.p.rapidapi.com/v2/search/title?title=${query.title}&country=${query.country}&show_type=${query.type}&output_language=en`;
   const options = {
     method: 'GET',
     headers: {
