@@ -23,8 +23,14 @@
 }
 
 .Title {
-  margin: 5px 0 0 5px;
+  margin: 3% 0 0 3%;
 
   font-size: 1.2rem;
   color: white;
+}
+
+@media (max-width: 900px) {
+  .Title {
+    font-size: 1rem;
+  }
 }
