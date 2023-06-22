@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { loadData } from './api/data';
 import styles from './App.module.css';
 import Loading from './components/Loading';
+import Search from './components/search';
 
-interface AppProps {
-  children: JSX.Element | JSX.Element[];
-}
-
-function App(props: AppProps) {
+function App() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,7 +17,7 @@ function App(props: AppProps) {
     };
   }, []);
 
-  const children = isLoading ? <Loading /> : props.children;
+  const children = isLoading ? <Loading /> : <Search />;
 
   return (
     <div className={styles.App}>
