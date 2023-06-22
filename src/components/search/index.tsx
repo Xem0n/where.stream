@@ -9,7 +9,7 @@ const MIN_TITLE_LENGTH = 3;
 
 function Search() {
   const [isSearching, setSearching] = useState(false);
-  const [shows, setShows] = useState([] as Show[]);
+  const [shows, setShows] = useState();
 
   const getShows = async (title: string, country: string, type: ShowTypes) => {
     setSearching(true);
