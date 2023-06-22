@@ -28,8 +28,10 @@ function Results(props: ResultsProps) {
     </p>
   );
 
+  let i = 0;
+
   const thumbnails = (props.shows ?? []).map((show) => (
-    <Thumbnail show={show} onClick={displayShow} />
+    <Thumbnail key={i++} show={show} onClick={displayShow} />
   ));
 
   const availableStreamings = Object.keys(
