@@ -1,0 +1,50 @@
+.Fallback {
+  margin-top: 40px;
+
+  font-size: 1.5rem;
+}
+
+.ShowsList {
+  width: 95%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+
+  margin: 15px 0;
+}
+
+.Show {
+  box-sizing: border-box;
+
+  position: fixed;
+
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  background: white;
+  border: 2px solid black;
+}
+
+.Show > * {
+  margin-left: 15px;
+}
+
+.Title {
+  font-size: 1.4rem;
+  margin: 15px 0 0 15px;
+}
+
+.Services {
+  margin-top: 0;
+  padding: 0 0 0 15px;
+}

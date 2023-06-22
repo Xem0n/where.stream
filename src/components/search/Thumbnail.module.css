@@ -1,0 +1,30 @@
+.Thumbnail {
+  width: 100%;
+  aspect-ratio: 16/9;
+
+  display: flex;
+
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+
+  cursor: pointer;
+}
+
+.Thumbnail > div {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  background: #00000066;
+  backdrop-filter: blur(1px);
+}
+
+.Title {
+  margin: 5px 0 0 5px;
+
+  font-size: 1.2rem;
+  color: white;
+}
