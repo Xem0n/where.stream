@@ -3,12 +3,10 @@ import Show from '../types/Show';
 import ShowQuery from '../types/ShowQuery';
 
 const API_KEY = process.env.REACT_APP_API_KEY as string;
+const MAX_DAYS_INTERVAL = 3;
 
 async function loadData() {
-  if (
-    localStorage.getItem('services') !== null &&
-    localStorage.getItem('countries') !== null
-  ) {
+  if (!shouldFetchServices()) {
     return;
   }
 
@@ -16,6 +14,27 @@ async function loadData() {
 
   populateServices(services);
   populateCountries(services);
+
+  localStorage.setItem('lastUpdate', new Date().toString());
+}
+
+function shouldFetchServices(): boolean {
+  if (
+    localStorage.getItem('services') === null ||
+    localStorage.getItem('countries') === null
+  ) {
+    return true;
+  }
+
+  const lastUpdate = new Date(localStorage.getItem('lastUpdate') ?? '');
+
+  if (!isFinite(+lastUpdate)) {
+    return true;
+  }
+
+  const diff = new Date(+new Date() - +lastUpdate);
+
+  return diff.getDate() > MAX_DAYS_INTERVAL;
 }
 
 async function fetchServices(): Promise<ServicesResult> {
